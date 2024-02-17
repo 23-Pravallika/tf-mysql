@@ -2,7 +2,7 @@
 resource "aws_db_instance" "mysql" {
   identifier           = "robo-${var.ENV}-mysql"
   allocated_storage    = 10
-  #db_name              = "mydb"
+  #db_name              = "mydb" #The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance. Note that this does not apply for Oracle or SQL Server engines.
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.medium"
