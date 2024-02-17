@@ -7,7 +7,7 @@ resource "aws_db_instance" "mysql" {
   engine_version       = "5.7"
   instance_class       = "db.t3.medium"
   username             = "admin1"
-  password             = "Roboshop"
+  password             = "RoboShop1"
   parameter_group_name = aws_db_parameter_group.mysql_pg.name
   skip_final_snapshot  = true # This will ensure it won't take snapshot when you destroy
   db_subnet_group_name = aws_db_subnet_group.mysql_subnet_group.name
