@@ -1,11 +1,11 @@
 # Creates RDS Instance 
 resource "aws_db_instance" "mysql" {
   identifier           = "robo-${var.ENV}-mysql"
-  allocated_storage    = 10
+  allocated_storage    = var.RDS_STORAGE
   #db_name              = "mydb" #The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance. Note that this does not apply for Oracle or SQL Server engines.
   engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t3.medium"
+  engine_version       = var.RDS_ENGINE_VERSION
+  instance_class       = var.RDS_INSTANCE_CLASS
   username             = "admin1"
   password             = "RoboShop1"
   parameter_group_name = aws_db_parameter_group.mysql_pg.name
@@ -17,7 +17,7 @@ resource "aws_db_instance" "mysql" {
 #creates parameter_group
 resource "aws_db_parameter_group" "mysql_pg" {
   name   = "robo-${var.ENV}-mysql-pg"
-  family = "mysql5.7"
+  family = "mysql${var.RDS_ENGINE_VERSION}"
 }
 
 #creates the subnet_group
