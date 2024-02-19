@@ -6,8 +6,8 @@ resource "aws_db_instance" "mysql" {
   engine               = "mysql"
   engine_version       = var.RDS_ENGINE_VERSION
   instance_class       = var.RDS_INSTANCE_CLASS
-  username             = "admin1"
-  password             = "RoboShop1"
+  username             = local.RDS_USER
+  password             = local.RDS_PASSWD
   parameter_group_name = aws_db_parameter_group.mysql_pg.name
   skip_final_snapshot  = true # This will ensure it won't take snapshot when you destroy
   db_subnet_group_name = aws_db_subnet_group.mysql_subnet_group.name
@@ -29,4 +29,6 @@ resource "aws_db_subnet_group" "mysql_subnet_group" {
     Name = "robo-${var.ENV}-mysql-subet-group"
   }
 }
+
+
 
